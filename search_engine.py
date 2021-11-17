@@ -13,7 +13,8 @@
 ##########################################################################
 
 
-import os, codecs, sys, glob, re, getopt, random, operator
+import sys
+import re
 from math import *
 from collections import defaultdict
 
@@ -159,8 +160,7 @@ with open(args.file_coll, 'r') as f:
         if match is not None:
             n_docs += 1
             doc_id = match.group(1)
-        elif (
-            line.startswith('<document>') or 
+        elif (line.startswith('<document>') or 
             line.startswith('<text>') or 
             line.startswith('</text>') or 
             line.startswith('</document>')):
