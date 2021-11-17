@@ -56,19 +56,20 @@ Once downloaded, put execution rights
 chmod u+x evaluation.pl
 
 To use it:
+```bash
 evaluation.pl -results my_result_file.res -relevance cisi.rel
+```
 
 
-
-result file format:
+Result file format:
 
 num_query   'Q0'   id_document   rank  score  'Exp'
 
 For example:
-1 Q0 doc_38 1 23.5217647552 Exp
-1 Q0 doc_52 2 23.1733417511 Exp
-1 Q0 doc_53 3 23.036365509 Exp
-1 Q0 doc_76 4 22.7806720734 Exp 
+1 Q0 doc_38 1 23.5217647552 Exp\
+1 Q0 doc_52 2 23.1733417511 Exp\
+1 Q0 doc_53 3 23.036365509 Exp\
+1 Q0 doc_76 4 22.7806720734 Exp\
 ...
 
 
