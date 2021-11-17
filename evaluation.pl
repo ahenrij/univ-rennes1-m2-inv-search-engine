@@ -88,60 +88,10 @@ foreach my $queryId (keys %h_query2did)
 	$precisionNumber++;
 	$MAP += &compute_AP(\@results, $queryId);
     }
-
-    #print $queryId,' ',scalar(keys %{$relevance{$queryId}}), ' ',$precision[0], ' ', $recallNumber, ' ',$precisionNumber,"\n";
-    #<STDIN>;
-
 }
 
 
-
-
-#opendir(RESDIR, $resultDir) or die "Error: cannot open result directory $resultDir: $!";
-#my $file;
-#while($file = readdir(RESDIR)) { #for each result file
-#  unless(-f "$resultDir/$file") {next;}
-#
-#
-#  # read the results
-#  my @results;
-#  open(FILE, "$resultDir/$file") or die "Error while opening result file $resultDir/$file: $!";
-#  my $line;
-#  while($line = <FILE>) {
-#    chomp($line);
-#    unless($line =~ /^\s*(\d+)\s*$/) {die "Error: file $file has not the right format. Found: $line";}
-#    push(@results, $1);
-#  }
-#  close(FILE);
-#  
-#  # get the query ID
-#  my $queryId = $file;
-#  $queryId =~ /(\d+)(\..*)?$/;
-#  $queryId = $1;
-#  
-#  # compute measures
-#  # recall: only if there are relevant documents
-#  if(exists $relevance{$queryId} and scalar(keys %{$relevance{$queryId}}) > 0) {
-#    for(my $i=0 ; $i<=$#dcvs ; $i++) {
-#      $recall[$i] += &compute_recall(\@results, $queryId, $dcvs[$i]);
-#    }
-#    $recallNumber++;
-#  }
-#  
-#  # precision: only if there are retrieved documents
-#  if(scalar(@results) > 0) {
-#    for(my $i=0 ; $i<=$#dcvs ; $i++) {
-#      #print STDERR "rel = @{$relevance{$queryId}}\n";
-#      $precision[$i] += &compute_precision(\@results, $queryId, $dcvs[$i]);
-#    }
-#    $precisionNumber++;
-#    $MAP += &compute_AP(\@results, $queryId);
-#  }
-#}
-#close(RESDIR);
-
 # compute mean values
-
 for my $i (0..$#dcvs) {
   if($precisionNumber != 0) {
     $precision[$i] = $precision[$i]/$precisionNumber;
